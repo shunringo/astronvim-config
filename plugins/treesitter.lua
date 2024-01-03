@@ -6,4 +6,25 @@ return {
       -- "lua"
     })
   end,
+  -- plugins/treesitter.lua
+  ensure_installed = {
+    "bash",
+    "css",
+    "dockerfile",
+    "html",
+    "javascript",
+    "json",
+    "lua",
+    "markdown",
+    "python",
+    "scss",
+    "toml",
+    "tsx",
+    "typescript",
+    "vim",
+    "yaml",
+    "rust",
+    "go",
+  },
 }
+
