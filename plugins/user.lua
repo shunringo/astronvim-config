@@ -66,5 +66,57 @@ return {
       "nvim-lua/plenary.nvim",
       "nvim-telescope/telescope.nvim"
     }
-  }
+  },
+  -- TODO: tab key との競合を解決
+  -- {
+  --   'codota/tabnine-nvim',
+  --   event = "VeryLazy",
+  --   build = './dl_binaries.sh',
+  --   config = function()
+  --     require('tabnine').setup({
+  --       disable_auto_comment=true,
+  --       accept_keymap="<Tab>",
+  --       dismiss_keymap = "<C-]>",
+  --       debounce_ms = 800,
+  --       suggestion_color = {gui = "#808080", cterm = 244},
+  --       exclude_filetypes = {"TelescopePrompt", "NvimTree"},
+  --       log_file_path = nil, -- absolute path to Tabnine log file
+  --     })
+  --     require('tabnine.status').status()
+  --   end,
+  -- },
+  { 
+    "tzachar/cmp-tabnine",
+    event = "VeryLazy",
+    dependencies = "hrsh7th/nvim-cmp",
+    after = "nvim-cmp",
+    build = "./install.sh",
+    config = function()
+      require'cmp'.setup {
+        sources = {
+ 	        { name = 'cmp_tabnine', priority = 1000, max_item_count = 5 },
+ 	        { name = 'nvim_lsp', priority = 900},
+ 	        { name = 'nvim_lua', priority = 800},
+ 	        { name = 'cmp-dap', priority = 900},
+ 	        { name = 'luasnip', priority = 700},
+ 	        { name = 'buffer', priority = 600},
+ 	        { name = 'path', priority = 200},
+        },
+      }
+      local tabnine = require('cmp_tabnine.config')
+      tabnine:setup({
+	      max_lines = 1000,
+	      max_num_results = 5,
+	      sort = true,
+	      run_on_every_keystroke = true,
+	      snippet_placeholder = '..',
+	      ignored_file_types = {
+		      -- default is not to ignore
+		      -- uncomment to ignore in lua:
+		      -- lua = true
+	      },
+	      show_prediction_strength = false
+      })
+    end,
+  },
 }
