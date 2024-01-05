@@ -59,7 +59,27 @@ return {
     "jackMort/ChatGPT.nvim",
     event = "VeryLazy",
     config = function()
-      require("chatgpt").setup()
+      require("chatgpt").setup({
+        --ここに設定を記載
+        --TODO: GPT4が対応した場合は以下を修正する
+        openai_params = {
+          model = "gpt-3.5-turbo",
+          -- frequency_penalty = 0, 
+          -- presence_penalty = 0, 
+          -- max_tokens = 300, 
+          -- temperature = 0, 
+          -- top_p = 1, 
+          -- n = 1, 
+        },
+        openai_edit_params = {
+          model = "gpt-3.5-turbo",
+          -- frequency_penalty = 0, 
+          -- presence_penalty = 0, 
+          -- temperature = 0, 
+          -- top_p = 1, 
+          -- n = 1, 
+        },
+      })
     end,
     dependencies = {
       "MunifTanjim/nui.nvim",
@@ -85,7 +105,7 @@ return {
   --     require('tabnine.status').status()
   --   end,
   -- },
-  { 
+  {
     "tzachar/cmp-tabnine",
     event = "VeryLazy",
     dependencies = "hrsh7th/nvim-cmp",
