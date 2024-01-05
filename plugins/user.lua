@@ -139,4 +139,53 @@ return {
       })
     end,
   },
+  {
+    "iamcco/markdown-preview.nvim",
+    cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
+    ft = { "markdown" },
+    build = function() vim.fn["mkdp#util#install"]() end,
+  },
+  {
+    'kkoomen/vim-doge',
+    event = 'InsertEnter',
+    run = ':call doge#install()'
+  },
+  {
+    'VonHeikemen/fine-cmdline.nvim',
+    event = "VeryLazy",
+    requires = {
+      {'MunifTanjim/nui.nvim'}
+    },
+    config = function()
+      -- :keyを押した際にfine-cmdlineを呼び出すように設定
+      vim.api.nvim_set_keymap('n', ':', '<cmd>FineCmdline<CR>', {noremap = true})
+      require('fine-cmdline').setup({
+        popup = {
+          position = {
+            row = '40%',
+            col = '50%',
+          },
+          size = {
+            width = '60%',
+          },
+          border = {
+            style = 'single',
+          },
+          win_options = {
+            winhighlight = 'Normal:Normal,FloatBorder:FloatBorder',
+          },
+        },
+      })
+    end,
+  },
+  {
+    "kylechui/nvim-surround",
+    version = "*", -- Use for stability; omit to use `main` branch for the latest features
+    event = "VeryLazy",
+    config = function()
+        require("nvim-surround").setup({
+            -- Configuration here, or leave empty to use defaults
+        })
+    end
+  },
 }

@@ -32,9 +32,14 @@ return {
     ["<leader>b"] = { name = "Buffers" },
     -- quick save
     -- ["<C-s>"] = { ":w!<cr>", desc = "Save File" },  -- change description but the same command
+    ["<C-b>"] = { "<cmd>:AerialToggle<cr>" },
   },
   t = {
     -- setting a mapping to false will disable it
     -- ["<esc>"] = false,
+  },
+  v = {
+    ["J"] = { ":move '>+1<CR>gv-gv", desc = "Move lines of code up" },
+    ["K"] = { ":move '<-2<CR>gv-gv", desc = "Move lines of code down" },
   },
 }
