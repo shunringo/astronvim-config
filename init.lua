@@ -82,5 +82,5 @@ return {
     --   },
     -- }
   end,
-  ["rafamadriz/friendly-snippets"] = { event = { nil } },
+  -- ["rafamadriz/friendly-snippets"] = { event = { nil } },
 }
