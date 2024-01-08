@@ -188,4 +188,25 @@ return {
         -- })
     end
   },
+  {
+    "github/copilot.vim",
+    event = "VeryLazy",
+    config = function()
+      vim.g.copilot_no_tab_map = true
+      vim.api.nvim_set_keymap("i", "<C-i>", 'copilot#Accept("<CR>")', { silent = true, expr = true })
+      vim.api.nvim_set_keymap("i", "<C-j>", 'copilot#Next()', { silent = true, expr = true })
+      vim.api.nvim_set_keymap("i", "<C-k>", 'copilot#Previous()', { silent = true, expr = true })
+      vim.api.nvim_set_keymap("i", "<C-o>", 'copilot#Dismiss()', { silent = true, expr = true })
+      vim.api.nvim_set_keymap("i", "<C-s>", 'copilot#Suggest()', { silent = true, expr = true })
+    end,
+  },
+  {
+    'akinsho/flutter-tools.nvim',
+    lazy = false,
+    dependencies = {
+        'nvim-lua/plenary.nvim',
+        'stevearc/dressing.nvim', -- optional for vim.ui.select
+    },
+    config = true,
+  },
 }
